@@ -1,0 +1,53 @@
+<html>
+<head>
+<script type="text/JavaScript">
+// получить значение из радиокнопок
+function validate()
+{
+// переменная р текстовое поле с именем tx
+var p=document.getElementById('tx');
+// переменная textt содержит текст из текстового поля
+var textt=p.value
+// переменная р1 радиокнопка с именем k1 
+var p1=document.getElementById('k1');
+// переменная р2 радиокнопка с именем k2 
+var p2=document.getElementById('k2');
+// переменная р3 радиокнопка с именем k3 
+var p3=document.getElementById('k3');
+// значение переменной vt – вид выравнивания
+// если выбрана 1-я радиокнопка
+if (p1.checked) vt='left' 
+// если выбрана 2-я радиокнопка
+if (p2.checked) vt='right' 
+// если выбрана 3-я радиокнопка
+if (p3.checked) vt='center' 
+var win=window.open("","","width=100,height=50");
+win.document.open();
+// переменная st содержит 
+// сформированную таблицу стилей нового документа
+var st="<head><style> h2 {text-align:"+vt+";}</style></head>"
+win.document.write(st); 
+// переменная st содержит 
+// сформированное тело нового документа
+var st="<body><h2>"+textt+"</h2></body>"
+win.document.write(st); 
+win.document.close();
+}
+</script>
+</head>
+<body>
+<form>
+<h3>введите текст</h3>
+<input type="text"id="tx" name="tx" value="">
+<h3>выберите выравнивание</h3>
+<input type='radio' id='k1' name='v' checked />
+&nbsp&nbsp по левой стороне <br />
+<input type='radio' id='k2' name='v' />
+&nbsp&nbsp по правой стороне <br />
+<input type='radio' id='k3' name='v'  />
+&nbsp&nbsp по центру <br />
+<br />
+<input type="button" value="Показать" onClick="validate()" />
+</form>
+</body>
+</html>

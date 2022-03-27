@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Language" content="ru" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Комплект автоматики</title>
+    <style type="text/css">
+        a { color: black; font-size: 20pt; }
+        b { color: black; font-size: 12pt; }
+        c { color: black; font-size: 12pt; }
+        td,th {border:1px solid black;}
+        tr {height: 25px;}
+        select {height: 25px;}
+        table {border: thin solid black;}
+    </style>
+<script>
+window.onload=nomer;
+// Назначаем событие щелчок для внесения общих данных по комплекту автоматики
+function nomer() {
+    var zamena1=document.getElementById("move1");// номер комплекта автоматики
+    zamena1.onclick=show1;
+    var zamena2=document.getElementById("move2");// название проекта
+    zamena2.onclick=show1;
+    var zamena3=document.getElementById("move3");// Номер системы
+    zamena3.onclick=show1;
+    var zamena4=document.getElementById("move4");// Дата создания
+    zamena4.onclick=show1;
+    var zamena5=document.getElementById("move5");// Контактное лицо
+    zamena5.onclick=show1;
+    var zamena6=document.getElementById("tab112");// Контактное лицо
+    zamena6.onclick=show1;
+}
+// функция внесения общих данных комплекта автоматики
+function show1(eventObj) {
+    var name=eventObj.target.id;
+    if (name=="tab112") {name=name;} else {name=name+1;}
+    zamena=document.getElementById(name);
+    var str= prompt("Введите новые данные ");
+    zamena.innerHTML=str;
+    if (str=="") {alert("Необходимо заполнить данные");show1();}
+    result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+    if (result)  { return str;
+    } else {show1();}
+}
+
+ function markirovka(){
+            var str="";
+            var zamena="";
+            var result=false;
+            
+            zamena=document.getElementById("mark");
+            zamena.innerHTML="VEINARD CB_()"+str;
+        }
+function shkaf(){
+            var tbl1_11=document.getElementById("tabl11"); 
+            var tbl1_12=document.getElementById("tabl12"); 
+            var tbl1_13=document.getElementById("tabl13");
+            if (tbl1_11.selected) {str=tbl1_11.value; zamena=document.getElementById("tab11");zamena.innerHTML=str;};
+            if (tbl1_12.selected) {str=tbl1_12.value; zamena=document.getElementById("tab11");zamena.innerHTML=str;};
+            if (tbl1_13.selected) {str=tbl1_13.value; zamena=document.getElementById("tab11");zamena.innerHTML=str;};
+            var tbl1_41=document.getElementById("tabl41"); 
+            var tbl1_42=document.getElementById("tabl42");
+            if (tbl1_41.selected) {str=tbl1_41.value; zamena=document.getElementById("tab14");zamena.innerHTML=str;};
+            if (tbl1_42.selected) {str=tbl1_42.value; zamena=document.getElementById("tab14");zamena.innerHTML=str;};
+            var tbl1_71=document.getElementById("tabl71"); 
+            var tbl1_72=document.getElementById("tabl72"); 
+            var tbl1_73=document.getElementById("tabl73"); 
+            var tbl1_74=document.getElementById("tabl74"); 
+            var tbl1_75=document.getElementById("tabl75"); 
+            var tbl1_76=document.getElementById("tabl76"); 
+            var tbl1_77=document.getElementById("tabl77"); 
+            if (tbl1_71.selected) {str=tbl1_71.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            if (tbl1_72.selected) {str=tbl1_72.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            if (tbl1_73.selected) {str=tbl1_73.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            if (tbl1_74.selected) {str=tbl1_74.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            if (tbl1_75.selected) {str=tbl1_75.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            if (tbl1_76.selected) {str=tbl1_76.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            if (tbl1_77.selected) {str=tbl1_77.value; zamena=document.getElementById("tab17");zamena.innerHTML=str;};
+            var tbl1_81=document.getElementById("tabl81"); 
+            var tbl1_82=document.getElementById("tabl82"); 
+            var tbl1_83=document.getElementById("tabl83"); 
+            if (tbl1_81.selected) {str=tbl1_81.value; zamena=document.getElementById("tab18");zamena.innerHTML=str;};
+            if (tbl1_82.selected) {str=tbl1_82.value; zamena=document.getElementById("tab18");zamena.innerHTML=str;};
+            if (tbl1_83.selected) {str=tbl1_83.value; zamena=document.getElementById("tab18");zamena.innerHTML=str;};
+            var tbl1_101=document.getElementById("tabl101"); 
+            var tbl1_102=document.getElementById("tabl102"); 
+            if (tbl1_101.selected) {str=tbl1_101.value; zamena=document.getElementById("tab110");zamena.innerHTML=str;}
+            if (tbl1_102.selected) {str=tbl1_102.value; zamena=document.getElementById("tab110");zamena.innerHTML=str;}
+            var tbl1_111=document.getElementById("tabl111"); 
+            var tbl1_112=document.getElementById("tabl112"); 
+            if (tbl1_111.selected) {str=tbl1_111.value; zamena=document.getElementById("tab111");zamena.innerHTML=str;}
+            if (tbl1_112.selected) {str=tbl1_112.value; zamena=document.getElementById("tab111");zamena.innerHTML=str;}
+            var otmena=document.getElementById("otmena_1"); 
+            str="<input type='button' value='Вернуться к выбору' onclick='otmena_1()'>";
+            otmena.innerHTML=str;
+                   }
+// Вывод бланка на печать в отдельном окне
+function prnt(){
+    var str1="";
+    var str2=document.getElementById("part1").innerHTML;
+    var str3=document.getElementById("part2").innerHTML;
+    var win=window.open();
+    win.document.open();
+
+    var blank=str1+str2+str3;
+    win.document.write(blank);
+    win.document.close();
+}
+</script>
+</head>
+<body style="color: #000000; background-color: #00FFFF">
+<!-- Начало бланка -->
+    <div id="part1">
+    <p><img  src="LOGO_V.gif" width="700" style="vertical-align: left;" aligne="middle" height="100" /></p>
+    <p><a id="move1">Комплект автоматики VEINARD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="move11">Нет номера</a></p>
+    <p><b id="move2">Проект:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move21">Данных нет</b></p>
+    <p><b id="move3">Система</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move31">номер системы</b></p>
+    <p><b id="move4">Дата</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move41">Данных нет</b></p>
+    <p><b id="move5">Контактное лицо</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move51">"     "</b></p>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Маркировка шкафа управления:</h1>
+    <h3 id="mark">VEINARD CB_()</h3>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Основные положения:</h1>
+    <p><c>• Установочная мощность шкафа определяется суммарной мощностью коммутируемых элементов.</c></p>
+    <p><c>• Шкаф стандартно имеет вход пожарной сигнализации типа Н.З. "сухой контакт" (контакт ПОЖАР должен размыкаться при пожаре), напряжение линии 220/230В.</c></p>
+    <p><c>• Шкаф оснащен запираемой дверцей, на которой расположены органы управления и индикации.</c></p>
+    <p><c>• Алгоритм работы шкафа устанавливается настоящим бланк-заказом, внутренним стандартом предприятия-изготовителя. Программное обеспечение контроллера является интеллектуальной собственностью компании.</c></p>
+    <p><c>• Разработчик оставляет за собой право вносить изменения, не влияющие на основные функции системы без предварительного уведомления с сохранением технических характеристик.</c></p>
+    <p><c>• Стандартно шкаф укомплектован сальниковыми кабельными вводами мембранного типа.</c></p>
+    <p><c>• Группа механического исполнения по ГОСТ 17516.1 - М7.</c></p>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Технические характеристики шкафа управления:</h1>
+    </div>
+<!-- Таблица характеристик шкафа -->
+    <table id="part2" style="border-collapse: collapse;">
+        <tr>   <th style="width: 50px;"><b>№ П/П</b></th> <th style="width: 520px;"><b>Нименование</b></th>                                                       <th style="width: 150px;"><b>Значение</b></th>    </tr>
+        <tr>   <td style="width: 50px;"><c>1.</c></td>    <td style="width: 520px;"><c>Количество вводов силовой цепи</c></td>                                    <td style="width: 150px;background-color: chartreuse;"><c id="tab11">
+            <select>
+                <option id="tabl11">1 - АВР отсутствует</option>
+                <option id="tabl12">1 - АВР отсутствует + ИБП</option>
+                <option id="tabl13">2 - АВР по питанию</option>
+            </select>    </c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>2.</c></td>    <td style="width: 520px;"><c>Установочная мощность ввода силовой цепи, N (кВт)</c></td>                 <td style="width: 150px;background-color: chartreuse;"><c id="tab12">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>3.</c></td>    <td style="width: 520px;"><c>Номинальное рабочее напряжение ввода силовой цепи</c></td>                 <td style="width: 150px;background-color: chartreuse;"><c id="tab13">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>4.</c></td>    <td style="width: 520px;"><c>Ввод питания цепей управления для защиты от заморозки</c></td>             <td style="width: 150px;background-color: chartreuse;"><c id="tab14">
+            <select>
+                <option id="tabl41">Есть</option>
+                <option id="tabl42">Нет</option>
+            </select>    </c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>5.</c></td>    <td style="width: 520px;"><c>Установочная мощность ввода питания защиты от заморозки, N (кВт)</c></td>  <td style="width: 150px;background-color: chartreuse;"><c id="tab15">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>6.</c></td>    <td style="width: 520px;"><c>Номинальное рабочее напряжение ввода питания защиты от заморозки</c></td>  <td style="width: 150px;background-color: chartreuse;"><c id="tab16">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>7.</c></td>    <td style="width: 520px;"><c>Контроллер (ПЛК)</c></td>                                                  <td style="width: 150px;background-color: chartreuse;"><c id="tab17">
+            <select>
+                <option id="tabl71">CAREL c.pCO</option>
+                <option id="tabl72">Zentec</option>
+                <option id="tabl73">SIEMENS CLIMATIC</option>
+                <option id="tabl74">SIEMENS SIMATIC S-7</option>
+                <option id="tabl75">Segnetics Pixel</option>
+                <option id="tabl76">Segnetics SMH4</option>
+                <option id="tabl77">ОВЕН</option>
+            </select>    </c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>8.</c></td>    <td style="width: 520px;"><c>Условия эксплуатации согласно ГОСТ 15150-69</c></td>                       <td style="width: 150px;background-color: chartreuse;"><c id="tab18">
+            <select>
+                <option id="tabl81">УХЛ4, ТС4</option>
+                <option id="tabl82">У3</option>
+                <option id="tabl83">У1, У2</option>
+            </select>    </c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>9.</c></td>    <td style="width: 520px;"><c>Температура эксплуатации (°С)</c></td>                                     <td style="width: 150px;background-color: chartreuse;"><c id="tab19">+1...+40</c></td>       </tr>
+        <tr>   <td style="width: 50px;"><c>10.</c></td>   <td style="width: 520px;"><c>Степень защиты корпуса по ГОСТ 14254-2015 (IP)</c></td>                    <td style="width: 150px;background-color: chartreuse;"><c id="tab110">
+            <select>
+                <option id="tabl101">IP54</option>
+                <option id="tabl102">IP65</option>
+            </select>    </c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>11.</c></td>   <td style="width: 520px;"><c>Сторона подвода кабельных линий к шкафу</c></td>                           <td style="width: 150px;background-color: chartreuse;"><c id="tab111">
+            <select>
+                <option id="tabl111">Сверху</option>
+                <option id="tabl112">Снизу</option>
+            </select>    </c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>12.</c></td>   <td style="width: 520px;"><c>Габаритные размеры шкафа,мм (ВхШхГ)</c></td>                               <td style="width: 150px;background-color: chartreuse;"><c id="tab112">Определяет завод-изготовитель</c></td>  </tr>
+    </table>
+    <p id="otmena_1"></p>
+<!-- Таблица оборудования установки -->
+    <div id="part3" style="border-collapse: collapse;">
+        <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Контроль и управление оборудованием:</h1>
+        <table style="border-collapse: collapse;">
+        <tr><th style="width: 50px;" id="number_sistem"><b>1</b></th> <th style="width: 460px;"><b>Функциональный состав установки</b></th> <th style="width: 210px;background-color: yellow; color: red;"><b>№1</b></th></tr>
+        </table>
+    </div>
+        <a href="Оборудование.html">&nbsp;Разделы каталога </a>
+        <input type="button" value="Вывод на ПЕЧАТЬ" onclick="prnt()">
+</body>
+
+</html>

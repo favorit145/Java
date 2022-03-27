@@ -1,0 +1,300 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Language" content="ru" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Комплектация установки</title>
+    <style type="text/css">
+        a { color: black; font-size: 16pt; }
+        b { color: black; font-size: 12pt; }
+        c { color: black; font-size: 12pt; }
+        td,th {border:1px solid black;}
+        tr {height: 25px;}
+    </style>
+<script src="Привод клапана.js"></script>
+<script>
+window.onload=init;
+function init() {
+    document.getElementById("Kl_Pr3").onclick=show;// Указать мощность нагрева
+    document.getElementById("privod_p").onclick=show;// Выбрать тип привода
+    document.getElementById("marka_privod_p").onclick=show;// Выбрать марку привода
+    document.getElementById("Kl_Pr4").onclick=show;// Указать количество приводов
+    document.getElementById("Kl_Pr1").onclick=show;// Указать количество приводов
+}
+function show(eventObj) {
+    var str="";
+    var name=eventObj.target.id;
+    var zamena=document.getElementById(name);
+//Количество приводов
+    if (name=="Kl_Pr4"){
+        str= prompt("Укажите количество приводов");        zamena.innerHTML=str;
+        if (str=="") {alert("Необходимо заполнить данные");show();}
+        result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+        document.getElementById("1qwntt_1").innerHTML=str;
+         if (result)  { return str;        } else {show();}
+        
+    }
+//Ввод мощности обогрева
+    if (document.getElementById("Kl_Pr2").checked && name=="Kl_Pr3"){
+        str= prompt("Введите мощность обогрева в кВт");         zamena.innerHTML=str+"  кВт";
+        if (str=="") {alert("Необходимо заполнить данные");show();}
+        result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+        document.getElementById("1data_1_2").innerHTML=str+"   кВт";
+        if (result)  { return str; } else {show();}
+    }
+// вывод типа привода
+    if (name=="privod_p"){var temp='<select>';    var i=0;
+        while (i<Privod_K.length)   { t=i+1; temp=temp+'<option id="Type_Kl_Pr_'+t+'">'+Privod_K[i]+'</option>'; i=i+1;    }
+        temp=temp+'</select';
+        document.getElementById("privod_p").innerHTML=temp;
+    }
+// вывод марки привода     !!!!! доделать для нескольких типов
+    if (name=="marka_privod_p"){var temp='<select>';    var i=0;
+        while (i<BelimoSpring.length){ t=i+1;
+        temp=temp+'<option id="Marka_Kl_Pr_'+t+'">'+BelimoSpring[i]+'</option>';        i=i+1;
+    }
+    temp=temp+'</select';
+    document.getElementById("marka_privod_p").innerHTML=temp;
+    }
+//выбор наименования привода
+    if (document.getElementById("Kl_Pr1").checked){ document.getElementById("1name_1").innerHTML="Клапан притока (привод с концевым выключателем)";  } 
+        else {document.getElementById("1name_1").innerHTML="Клапан притока (привод без концевого выключателя)";}
+}
+// вывод на печать
+function prnt(){
+    var str1="";
+    var str2=document.getElementById("part1").innerHTML;
+    var str3=document.getElementById("part2").innerHTML;
+    var str4=document.getElementById("part3").innerHTML;
+    var win=window.open();
+    win.document.open();
+
+    var blank=str1+str2+str3;
+    win.document.write(blank);
+    win.document.close();
+}
+// обновление выбранных данных
+function new_data(){
+    var i=0;
+    while (i<Privod_K.length)   {var t=i+1; var name="Type_Kl_Pr_"+t;
+        if (document.getElementById(name).selected) {
+             var temp=document.getElementById(name).innerHTML;
+             document.getElementById("1data_1_1").innerHTML=temp;}
+             i=i+1; 
+    }
+    //if (document.getElementById("1qwntt_1").innerHTML==0){document.getElementById("rw1").innerHTML="2";}
+    alert(document.getElementById("rw1").innerHTML);
+}
+</script>
+</head>
+<body style="color: #000000; background-color: #00FFFF">
+    <p><img  src="LOGO_V.gif" width="700" style="vertical-align: left;" aligne="middle" height="100" /></p>
+    <p><a>Клапан притока:</a></p>
+    <p><b>Привод:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="privod_p">Тип привода</b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="marka_privod_p">Марка привода</b><b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="Kl_Pr1" >Концевой выключатель</b>
+        <b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="Kl_Pr2" >Подогрев</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="Kl_Pr3">0 кВт</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Количество приводов      </b><b id="Kl_Pr4">1</b></p>
+    <div id="Privod_Kl_Pr" style="width: 150px;"></div> 
+       
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Маркировка шкафа управления:</h1>
+    <h3 id="mark">VEINARD CB_()</h3>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Основные положения:</h1>
+    <p><c>• Установочная мощность шкафа определяется суммарной мощностью коммутируемых элементов.</c></p>
+    <p><c>• Шкаф стандартно имеет вход пожарной сигнализации типа Н.З. "сухой контакт" (контакт ПОЖАР должен размыкаться при пожаре), напряжение линии 220/230В.</c></p>
+    <p><c>• Шкаф оснащен запираемой дверцей, на которой расположены органы управления и индикации.</c></p>
+    <p><c>• Алгоритм работы шкафа устанавливается настоящим бланк-заказом, внутренним стандартом предприятия-изготовителя. Программное обеспечение контроллера является интеллектуальной собственностью компании.</c></p>
+    <p><c>• Разработчик оставляет за собой право вносить изменения, не влияющие на основные функции системы без предварительного уведомления с сохранением технических характеристик.</c></p>
+    <p><c>• Стандартно шкаф укомплектован сальниковыми кабельными вводами мембранного типа.</c></p>
+    <p><c>• Группа механического исполнения по ГОСТ 17516.1 - М7.</c></p>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Технические характеристики шкафа управления:</h1>
+    <input type="button" id="butprint" value="Обновление" OnClick="new_data();">
+
+    <table style="border-collapse: collapse;">
+        <tr>   <th style="width: 50px;"><b>№ П/П</b></th> <th style="width: 520px;"><b>Нименование</b></th>                                                       <th style="width: 150px;"><b>Значение</b></th>    </tr>
+        <tr>   <td style="width: 50px;"><c>1.</c></td>    <td style="width: 520px;"><c>Количество вводов силовой цепи</c></td>                                    <td style="width: 150px;background-color: chartreuse;"><c id="tab11">1 - АВР отсутствует</c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>2.</c></td>    <td style="width: 520px;"><c>Установочная мощность ввода силовой цепи, N (кВт)</c></td>                 <td style="width: 150px;background-color: chartreuse;"><c id="tab12">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>3.</c></td>    <td style="width: 520px;"><c>Номинальное рабочее напряжение ввода силовой цепи</c></td>                 <td style="width: 150px;background-color: chartreuse;"><c id="tab13">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>4.</c></td>    <td style="width: 520px;"><c>Ввод питания цепей управления для защиты от заморозки</c></td>             <td style="width: 150px;background-color: chartreuse;"><c id="tab14">Нет</c></td>      </tr>
+        <tr>   <td style="width: 50px;"><c>5.</c></td>    <td style="width: 520px;"><c>Установочная мощность ввода питания защиты от заморозки, N (кВт)</c></td>  <td style="width: 150px;background-color: chartreuse;"><c id="tab15">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>6.</c></td>    <td style="width: 520px;"><c>Номинальное рабочее напряжение ввода питания защиты от заморозки</c></td>  <td style="width: 150px;background-color: chartreuse;"><c id="tab16">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>7.</c></td>    <td style="width: 520px;"><c>Контроллер (ПЛК)</c></td>                                                  <td style="width: 150px;background-color: chartreuse;"><c id="tab17">отсутствует</c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>8.</c></td>    <td style="width: 520px;"><c>Условия эксплуатации согласно ГОСТ 15150-69</c></td>                       <td style="width: 150px;background-color: chartreuse;"><c id="tab18">УХЛ4, ТС4</c></td>      </tr>
+        <tr>   <td style="width: 50px;"><c>9.</c></td>    <td style="width: 520px;"><c>Температура эксплуатации (°С)</c></td>                                     <td style="width: 150px;background-color: chartreuse;"><c id="tab19">+1...+40</c></td>       </tr>
+        <tr>   <td style="width: 50px;"><c>10.</c></td>   <td style="width: 520px;"><c>Степень защиты корпуса по ГОСТ 14254-2015 (IP)</c></td>                    <td style="width: 150px;background-color: chartreuse;"><c id="tab110">IP54</c></td>          </tr>
+        <tr>   <td style="width: 50px;"><c>11.</c></td>   <td style="width: 520px;"><c>Сторона подвода кабельных линий к шкафу</c></td>                           <td style="width: 150px;background-color: chartreuse;"><c id="tab111">Сверху</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>12.</c></td>   <td style="width: 520px;"><c>Габаритные размеры шкафа,мм (ВхШхГ)</c></td>                               <td style="width: 150px;background-color: chartreuse;"><c id="tab112">Определяет завод-изготовитель</c></td>  </tr>
+    </table>
+    <div id="part3" style="border-collapse: collapse;">
+        <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Контроль и управление оборудованием:</h1>
+        <table style="border-collapse: collapse;">
+        <tr><th style="width: 50px;" id="number_sistem"><b>1</b></th> <th style="width: 460px;"><b>Функциональный состав установки</b></th> <th style="width: 210px;background-color: yellow; color: red;"><b>№1</b></th></tr>
+        </table>
+        <table style="border-collapse: collapse;">
+            <tr><th style="width: 50px;"><b>№п/п</b></th> <th style="width: 400px;"><b>Наименование</b></th> <th style="width: 230px;"><b>Характеристики</b></th> <th style="width: 40px;"><b>шт.</b></th> </tr>
+    <!-- Клапан притока -->
+    <div id="rw1">
+            <tr><td rowspan="3" id="1nom_1"><c>0</c></td>
+                <td rowspan="2" id="1name_1">Клапан притока (привод без концевого выключателя)</td>
+                <td rowspan="2" id="1data_1_1">U пит.220 В, открыто/закрыто с пружинным возвратом</td>
+                <td rowspan="3" id="1qwntt_1"><b>0</b></td></tr>
+            <tr></tr>
+            <tr><td >Мощность обогрева клапана (при наличии)</td>
+                <td id="1data_1_2">кВт</td></tr>
+    </div>
+    <!-- Жидкостный преднагреватель -->
+            <tr><td rowspan="3" id="1nom_2"><c>0</c></td>
+                <td rowspan="3" >Жидкостный нагреватель предварительного нагрева</td>
+                <td id="1data_2_1">Марка узла нагрева</td>
+                <td rowspan="3" id="1qwntt_2"><b>0</b></td></tr>
+            <tr><td id="1data_2_2">Р насоса   кВт</td></tr>
+            <tr><td id="1data_2_3">U питания   В</td></tr>
+    <!-- Электрический преднагреватель -->
+            <tr><td rowspan="3" id="1nom_3"><c>0</c></td>
+                <td rowspan="2" >Электронагреватель предварительного нагрева</td>
+                <td id="1data_3_1">Р нагрева общ.    кВт</td>
+                <td rowspan="3" id="1qwntt_3"><b>0</b></td></tr>
+            <tr><td id="1data_3_2">U питания   В</td></tr>
+            <tr><td>Ступени включения (N1+N2+...) кВт</td><td id="1data_3_3">+ кВт</td></tr>
+    <!-- Фильтры -->
+            <tr><td rowspan="2" id="1nom_4"><c>0</c></td>
+                <td rowspan="2" >Фильтры</td>
+                <td id="1data_4_1">Приточная часть</td>
+                <td id="1qwntt_4_1"><b>0</b></td></tr>
+            <tr><td id="1data_4_2">Вытяжная часть</td>
+                <td id="1qwntt_4_2"><b>0</b></td></tr>
+    <!-- Клапан рециркуляции -->
+            <tr><td id="1nom_5"><c>0</c></td>
+                <td id="1name_5" >Клапан рецркуляции (привод без концевого выключателя)</td>
+                <td id="1data_5_1">Марка привода</td>
+                <td id="1qwntt_5"><b>0</b></td></tr>
+    <!-- Пластинчатый рекуператор -->
+            <tr><td id="1nom_6"><c>0</c></td>
+                <td id="1name_6" >Пластинчатый рекуператор без обводного канала</td>
+                <td id="1data_6_1">Марка привода</td>
+                <td id="1qwntt_6"><b>0</b></td></tr>
+    <!-- Жидкостный рекуператор -->
+            <tr><td rowspan="3" id="1nom_7"><c>0</c></td>
+                <td rowspan="3" >Жидкостный (гликолевый) теплоутилизатор)</td>
+                <td id="1data_7_1">Марка узла теплоутилизатора</td>
+                <td rowspan="3" id="1qwntt_7"><b>0</b></td></tr>
+            <tr><td id="1data_7_2">Р насоса   кВт</td></tr>
+            <tr><td id="1data_7_3">U питания   В</td></tr>
+    <!-- Роторный рекуператор -->
+            <tr><td rowspan="3" id="1nom_8"><c>0</c></td>
+                <td rowspan="3" >Роторный теплоутилизатор (подключение с использованием частотного преобразователя)</td>
+                <td id="1data_8_1">Р двигателя     кВт</td>
+                <td rowspan="3" id="1qwntt_8"><b>0</b></td></tr>
+            <tr><td id="1data_8_2">U питания   В</td></tr>
+            <tr><td id="1data_8_3">I номинальный    А</td></tr>
+    <!-- Жидкостный (паровой) нагреватель -->
+            <tr><td rowspan="3" id="1nom_9"><c>0</c></td>
+                <td rowspan="3" id="1name_9">Жидкостный (водяной) нагреватель приточного воздуха</td>
+                <td id="1data_9_1">Марка узла теплоутилизатора</td>
+                <td rowspan="3" id="1qwntt_9"><b>0</b></td></tr>
+            <tr><td id="1data_9_2">Р насоса   кВт</td></tr>
+            <tr><td id="1data_9_3">U питания   В</td></tr>
+    <!-- Электронагреватель приточного вохдуха -->
+            <tr><td rowspan="3" id="1nom_10"><c>0</c></td>
+                <td rowspan="2" >Электронагреватель приточного воздуха</td>
+                <td id="1data_10_1">Р нагрева общ.    кВт</td>
+                <td rowspan="3" id="1qwntt_10"><b>0</b></td></tr>
+            <tr><td id="1data_10_2">U питания   В</td></tr>
+            <tr><td>Ступени включения (N1+N2+...) кВт</td>
+                <td id="1data_10_3">+ кВт</td></tr>
+    <!-- Двигатель приточного вентилятора -->
+            <tr><td rowspan="3" id="1nom_11"><c>0</c></td>
+                <td>Двигатель приточного вентилятора</td>
+                <td id="1data_11_1">Р двигателя     кВт</td>
+                <td rowspan="3" id="1qwntt_11"><b>0</b></td></tr>
+            <tr><td rowspan="2" id="1name_11">Пуск двигателя</td>
+                <td id="1data_11_2">U питания   В</td></tr>
+            <tr><td id="1data_11_3">I номинальный    А</td></tr>
+    <!-- Двигатель вытяжного вентилятора -->
+            <tr><td rowspan="3" id="1nom_12"><c>0</c></td>
+                <td>Двигатель вытяжного вентилятора</td>
+                <td id="1data_12_1">Р двигателя     кВт</td>
+                <td rowspan="3" id="1qwntt_12"><b>0</b></td></tr>
+            <tr><td rowspan="2" id="1name_12">Пуск двигателя</td>
+                <td id="1data_12_2">U питания   В</td></tr>
+            <tr><td id="1data_12_3">I номинальный    А</td></tr>
+    <!-- Осн/рез двигатели приточного вентилятора -->
+            <tr><td rowspan="3" id="1nom_13"><c>0</c></td>
+                <td id="1name_13_1">Осн/рез двигатели приточного вентилятора</td>
+                <td id="1data_13_1">Р двигателя     кВт</td>
+                <td rowspan="3" id="1qwntt_13"><b>0</b></td></tr>
+            <tr><td rowspan="2" id="1name_13_2">Пуск двигателя</td>
+                <td id="1data_13_2">U питания   В</td></tr>
+            <tr><td id="1data_13_3">I номинальный    А</td></tr>
+    <!-- Приточные отсечные клапана -->
+            <tr><td id="1nom_14"><c>0</c></td>
+                <td id="1name_14">Приточные отсечные клапана (привод с концевым выключателем)</td>
+                <td id="1data_14">Марка привода</td>
+                <td id="1qwntt_14"><b>0</b></td></tr>
+    <!-- Осн/рез двигатели вытяжного вентилятора -->
+            <tr><td rowspan="3" id="1nom_15"><c>0</c></td>
+                <td id="1name_15_1">Осн/рез двигатели вытяжного вентилятора</td>
+                <td id="1data_15_1">Р двигателя     кВт</td>
+                <td rowspan="3" id="1qwntt_15"><b>0</b></td></tr>
+            <tr><td rowspan="2" id="1name_15_2">Пуск двигателя</td>
+                <td id="1data_15_2">U питания   В</td></tr>
+            <tr><td id="1data_15_3">I номинальный    А</td></tr>
+    <!-- Вытяжные отсечные клапана -->
+            <tr><td id="1nom_16"><c>0</c></td>
+                <td id="1name_16">Вытяжные отсечные клапана (привод с концевым выключателем)</td>
+                <td id="1data_16">Марка привода</td>
+                <td id="1qwntt_16"><b>0</b></td></tr>
+    <!-- Клапан вытяжки -->
+            <tr><td rowspan="3" id="1nom_17"><c>0</c></td>
+                <td rowspan="2" id="1name_17">Клапан вытяжки (привод с концевым выключателем)</td>
+                <td rowspan="2" id="1data_17_1">U пит.220 В, открыто/закрыто с пружинным возвратом</td>
+                <td rowspan="3" id="1qwntt_17"><b>0</b></td></tr>
+            <tr></tr>
+            <tr><td >Мощность обогрева клапана (при наличии)</td>
+                <td id="1data_17_2">кВт</td></tr>
+    <!-- Жидкостный (водяной) охладитель -->
+            <tr><td rowspan="3" id="1nom_18"><c>0</c></td>
+                <td rowspan="3" id="1name_18">Жидкостный (водяной) охладитель</td>
+                <td id="1data_18_1">Марка узла охладителя</td>
+                <td rowspan="3" id="1qwntt_18"><b>0</b></td></tr>
+            <tr><td id="1data_18_2">Р насоса   кВт</td></tr>
+            <tr><td id="1data_18_3">U питания   В</td></tr>
+    <!-- Вытяжные отсечные клапана -->
+            <tr><td id="1nom_19"><c>0</c></td>
+                <td>Фреоновый охладитель</td>
+                <td id="1data_19">Ступени включения</td>
+                <td id="1qwntt_19"><b>0</b></td></tr>
+    <!-- Увлажнитель воздуха -->
+            <tr><td rowspan="3" id="1nom_20"><c>0</c></td>
+                <td rowspan="3" id="1name_20">Увлажнитель воздуха</td>
+                <td id="1data_20_1">Тип увлажнителя</td>
+                <td rowspan="3" id="1qwntt_20"><b>0</b></td></tr>
+            <tr><td id="1data_20_2">Р насоса   кВт</td></tr>
+            <tr><td id="1data_20_3">U питания   В</td></tr>
+    <!-- Электрический догреватель приточного вохдуха -->
+            <tr><td rowspan="3" id="1nom_21"><c>0</c></td>
+                <td rowspan="2" >Электрический догреватель приточного воздуха</td>
+                <td id="1data_21_1">Р нагрева общ.    кВт</td>
+                <td rowspan="3" id="1qwntt_21"><b>0</b></td></tr>
+            <tr><td id="1data_21_2">U питания макс.   В</td></tr>
+            <tr><td>Мощности догревателей (N1+N2+...) кВт</td>
+                <td id="1data_21_3">+ кВт</td></tr>
+    
+        </table>
+    </div>
+        <a href="Выбор установки.html">Выбор установки</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="Разделы%20каталога.htm">&nbsp;Разделы каталога </a>
+    
+    <p>&nbsp;</p>
+        <p>
+        Для входа на страницу с описанием товара требуется нажать левой кнопкой
+        &quot;мышки&quot; на изображение товара.
+    </p>
+    <p>Выбранный товар можно купить , добавив его в корзину.</p>
+    <p style="color: #0000FF">
+        Можно заказать доставку выбранных товаров. Об условиях
+        и стоимости доставки смотри в разделе <a href="Оплата%20и%20доставка.htm">
+            &quot;Оплата и доставка&quot;
+        </a>
+    </p>
+
+</body>
+
+</html>

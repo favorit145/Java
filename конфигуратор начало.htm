@@ -1,0 +1,141 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Language" content="ru" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Комплект автоматики</title>
+    <style type="text/css">
+        a { color: black; font-size: 20pt; }
+        b { color: black; font-size: 12pt; }
+        c { color: black; font-size: 12pt; }
+        td,th {border:1px solid black;}
+        tr {height: 25px;}
+    </style>
+<script>
+        function nomer() {
+            var str="";
+            var zamena="";
+            var result=false;
+            str = prompt("Введите номер бланк-заказа","0");
+            zamena=document.getElementById("move1");
+            zamena.innerHTML="Бланк-заказ № "+str;
+            result=confirm("Если номер правильный - нажмите ОК, для корректировки - нажмите Отмена");
+                if (result)  { return str;
+                } else {nomer();}
+        }
+        function project(){
+            var str="";
+            var zamena="";
+            var result=false;
+            str= prompt("Введите данные по проекту");
+            zamena=document.getElementById("move2");
+            zamena.innerHTML="   "+str;
+            result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+                if (result)  { return str;
+                } else {project();}
+        }
+        function sistem(){
+            var str="";
+            var zamena="";
+            var result=false;
+            str= prompt("Введите номера систем");
+            zamena=document.getElementById("move3");
+            zamena.innerHTML="   "+str;
+            result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+                if (result)  { return str;
+                } else {sistem();}
+        }
+        function contact(){
+            var str="";
+            var zamena="";
+            var result=false;
+            str= prompt("Введите номера систем");
+            zamena=document.getElementById("move4");
+            zamena.innerHTML="   "+str;
+            result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+                if (result)  { return str;
+                } else {contact();}
+        }
+        function markirovka(){
+            var str="";
+            var zamena="";
+            var result=false;
+            
+            zamena=document.getElementById("mark");
+            zamena.innerHTML="VEINARD CB_()"+str;
+        }
+        function prnt(){
+
+                   }
+                   window.onload=init;
+function init() {
+    var images=document.getElementsByTagName("td")
+        for (var i=0;i<images.length;i++) {
+        images[i].onclick=showtab;}
+}
+function showtab(eventObj) {
+    var zamena=eventObj.target;
+    var result=false;
+    str= prompt("Введите новые данные ");
+    zamena.innerHTML=str;
+    result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+    if (result)  { return str;
+    } else {showtub11();}
+}
+</script>
+</head>
+<body style="color: #000000; background-color: #00FFFF">
+    <p><img  src="LOGO_V.gif" width="700" style="vertical-align: left;" aligne="middle" height="100" /></p>
+    <p><a>Комплект автоматики VEINARD</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a id="move1">Нет номера</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="but1" value="Изменить номер" OnClick="nomer();"></p>
+    <p><b>Проект:</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move2">Данных нет</b><input type="button" id="but2" value="Данные по проекту" OnClick="project();"></p>
+    <p><b>Система</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move3"></b><input type="button" id="but3" value="Номер системы"  OnClick="sistem();"></p>
+    <p><b>Дата</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move4"></b></p>
+    <p><b>Контактное лицо</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b id="move5"></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" id="but4" value="Ввести данные" OnClick="contact();"></p>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Маркировка шкафа управления:</h1>
+    <h3 id="mark">VEINARD CB_()</h3>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Основные положения:</h1>
+    <p><c>• Установочная мощность шкафа определяется суммарной мощностью коммутируемых элементов.</c></p>
+    <p><c>• Шкаф стандартно имеет вход пожарной сигнализации типа Н.З. "сухой контакт" (контакт ПОЖАР должен размыкаться при пожаре), напряжение линии 220/230В.</c></p>
+    <p><c>• Шкаф оснащен запираемой дверцей, на которой расположены органы управления и индикации.</c></p>
+    <p><c>• Алгоритм работы шкафа устанавливается настоящим бланк-заказом, внутренним стандартом предприятия-изготовителя. Программное обеспечение контроллера является интеллектуальной собственностью компании.</c></p>
+    <p><c>• Разработчик оставляет за собой право вносить изменения, не влияющие на основные функции системы без предварительного уведомления с сохранением технических характеристик.</c></p>
+    <p><c>• Стандартно шкаф укомплектован сальниковыми кабельными вводами мембранного типа.</c></p>
+    <p><c>• Группа механического исполнения по ГОСТ 17516.1 - М7.</c></p>
+    <h1 style="color:#FFFFFF;background-color: darkslategrey; font-size: 20pt;">Технические характеристики шкафа управления:</h1>
+
+    <table style="border-collapse: collapse;">
+        <tr>   <th style="width: 50px;"><b>№ П/П</b></th> <th style="width: 520px;"><b>Нименование</b></th>                                                       <th style="width: 150px;"><b>Значение</b></th>    </tr>
+        <tr>   <td style="width: 50px;"><c>1.</c></td>    <td style="width: 520px;"><c>Количество вводов силовой цепи</c></td>                                    <td style="width: 150px;background-color: chartreuse;"><c id="tab11">1 - АВР отсутствует</c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>2.</c></td>    <td style="width: 520px;"><c>Установочная мощность ввода силовой цепи, N (кВт)</c></td>                 <td style="width: 150px;background-color: chartreuse;"><c id="tab12">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>3.</c></td>    <td style="width: 520px;"><c>Номинальное рабочее напряжение ввода силовой цепи</c></td>                 <td style="width: 150px;background-color: chartreuse;"><c id="tab13">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>4.</c></td>    <td style="width: 520px;"><c>Ввод питания цепей управления для защиты от заморозки</c></td>             <td style="width: 150px;background-color: chartreuse;"><c id="tab14">Нет</c></td>      </tr>
+        <tr>   <td style="width: 50px;"><c>5.</c></td>    <td style="width: 520px;"><c>Установочная мощность ввода питания защиты от заморозки, N (кВт)</c></td>  <td style="width: 150px;background-color: chartreuse;"><c id="tab15">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>6.</c></td>    <td style="width: 520px;"><c>Номинальное рабочее напряжение ввода питания защиты от заморозки</c></td>  <td style="width: 150px;background-color: chartreuse;"><c id="tab16">0</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>7.</c></td>    <td style="width: 520px;"><c>Контроллер (ПЛК)</c></td>                                                  <td style="width: 150px;background-color: chartreuse;"><c id="tab17">отсутствует</c></td>    </tr>
+        <tr>   <td style="width: 50px;"><c>8.</c></td>    <td style="width: 520px;"><c>Условия эксплуатации согласно ГОСТ 15150-69</c></td>                       <td style="width: 150px;background-color: chartreuse;"><c id="tab18">УХЛ4, ТС4</c></td>      </tr>
+        <tr>   <td style="width: 50px;"><c>9.</c></td>    <td style="width: 520px;"><c>Температура эксплуатации (°С)</c></td>                                     <td style="width: 150px;background-color: chartreuse;"><c id="tab19">+1...+40</c></td>       </tr>
+        <tr>   <td style="width: 50px;"><c>10.</c></td>   <td style="width: 520px;"><c>Степень защиты корпуса по ГОСТ 14254-2015 (IP)</c></td>                    <td style="width: 150px;background-color: chartreuse;"><c id="tab110">IP54</c></td>          </tr>
+        <tr>   <td style="width: 50px;"><c>11.</c></td>   <td style="width: 520px;"><c>Сторона подвода кабельных линий к шкафу</c></td>                           <td style="width: 150px;background-color: chartreuse;"><c id="tab111">Сверху</c></td>        </tr>
+        <tr>   <td style="width: 50px;"><c>12.</c></td>   <td style="width: 520px;"><c>Габаритные размеры шкафа,мм (ВхШхГ)</c></td>                               <td style="width: 150px;background-color: chartreuse;"><c id="tab112">Определяет завод-изготовитель</c></td>  </tr>
+    </table>
+    
+        <a href="Выбор установки.html">Выбор установки</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="Разделы%20каталога.htm">&nbsp;Разделы каталога </a>
+    
+    <p>&nbsp;</p>
+    <input type="button" id="butprint" value="Вывод на печать" OnClick="prnt();">
+    <p>
+        Для входа на страницу с описанием товара требуется нажать левой кнопкой
+        &quot;мышки&quot; на изображение товара.
+    </p>
+    <p>Выбранный товар можно купить , добавив его в корзину.</p>
+    <p style="color: #0000FF">
+        Можно заказать доставку выбранных товаров. Об условиях
+        и стоимости доставки смотри в разделе <a href="Оплата%20и%20доставка.htm">
+            &quot;Оплата и доставка&quot;
+        </a>
+    </p>
+
+</body>
+
+</html>

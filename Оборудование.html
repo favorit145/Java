@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Language" content="ru" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Комплект автоматики</title>
+    <style type="text/css">
+        a { color: black; font-size: 20pt; }
+        b { color: black; font-size: 14pt; }
+        c { color: black; font-size: 14pt; }
+        td,th {border:1px solid black;}
+        tr {height: 25px;}
+        select {height: 25px;}
+        table {border: thin solid black;}
+    </style>
+<script>
+window.onload=nomer;
+// Назначаем событие щелчок для внесения общих данных по комплекту автоматики
+function nomer() {
+    var zamena1=document.getElementById("move1");// номер комплекта автоматики
+    zamena1.onclick=show1;
+    var zamena2=document.getElementById("move2");// название проекта
+    zamena2.onclick=show1;
+    var zamena3=document.getElementById("move3");// Номер системы
+    zamena3.onclick=show1;
+    var zamena4=document.getElementById("move4");// Дата создания
+    zamena4.onclick=show1;
+    var zamena5=document.getElementById("move5");// Контактное лицо
+    zamena5.onclick=show1;
+    var zamena6=document.getElementById("tab112");// Контактное лицо
+    zamena6.onclick=show1;
+}
+// функция внесения общих данных комплекта автоматики
+function show1(eventObj) {
+    var name=eventObj.target.id;
+    if (name=="tab112") {name=name;} else {name=name+1;}
+    zamena=document.getElementById(name);
+    var str= prompt("Введите новые данные ");
+    zamena.innerHTML=str;
+    if (str=="") {alert("Необходимо заполнить данные");show1();}
+    result=confirm("Если данные  правильные - нажмите ОК, для корректировки - нажмите Отмена");
+    if (result)  { return str;
+    } else {show1();}
+}
+
+        function markirovka(){
+            var str="";
+            var zamena="";
+            var result=false;
+            
+            zamena=document.getElementById("mark");
+            zamena.innerHTML="VEINARD CB_()"+str;
+        }
+        function prnt(){
+
+                   }
+</script>
+</head>
+<body style="color: #000000; background-color: #00FFFF">
+<!-- Таблица функционального состава установки-->
+    <table style="border-collapse: collapse;">
+        <tr><th style="width: 50px;"><b>№п/п</b></th> <th style="width: 400px;"><b>Наименование</b></th> <th style="width: 230px;"><b>Характеристики</b></th> <th style="width: 40px;"><b>шт.</b></th> </tr>
+<!-- Клапан притока -->
+        <tr><td rowspan="3" id="1nom_1"><c>0</c></td>
+            <td rowspan="2" id="1name_1">Клапан притока (привод с концевым выключателем)</td>
+            <td rowspan="2" id="1data_1_1">U пит.220 В, открыто/закрыто с пружинным возвратом</td>
+            <td rowspan="3" id="1qwntt_1"><b>0</b></td></tr>
+        <tr></tr>
+        <tr><td >Мощность обогрева клапана (при наличии)</td>
+            <td id="1data_1_2">кВт</td></tr>
+<!-- Жидкостный преднагреватель -->
+        <tr><td rowspan="3" id="1nom_2"><c>0</c></td>
+            <td rowspan="3" >Жидкостный нагреватель предварительного нагрева</td>
+            <td id="1data_2_1">Марка узла нагрева</td>
+            <td rowspan="3" id="1qwntt_2"><b>0</b></td></tr>
+        <tr><td id="1data_2_2">Р насоса   кВт</td></tr>
+        <tr><td id="1data_2_3">U питания   В</td></tr>
+<!-- Электрический преднагреватель -->
+        <tr><td rowspan="3" id="1nom_3"><c>0</c></td>
+            <td rowspan="2" >Электронагреватель предварительного нагрева</td>
+            <td id="1data_3_1">Р нагрева общ.    кВт</td>
+            <td rowspan="3" id="1qwntt_3"><b>0</b></td></tr>
+        <tr><td id="1data_3_2">U питания   В</td></tr>
+        <tr><td>Ступени включения (N1+N2+...) кВт</td><td id="1data_3_3">+ кВт</td></tr>
+<!-- Фильтры -->
+        <tr><td rowspan="2" id="1nom_4"><c>0</c></td>
+            <td rowspan="2" >Фильтры</td>
+            <td id="1data_4_1">Приточная часть</td>
+            <td rowspan="2" id="1qwntt_4"><b>0</b></td></tr>
+        <tr><td id="1data_4_2">Вытяжная часть</td></tr>
+<!-- Клапан рециркуляции -->
+        <tr><td id="1nom_5"><c>0</c></td>
+            <td id="1name_5" >Клапан рецркуляции (привод без концевого выключателя)</td>
+            <td id="1data_5_1">Марка привода</td>
+            <td id="1qwntt_5"><b>0</b></td></tr>
+<!-- Пластинчатый рекуператор -->
+        <tr><td id="1nom_6"><c>0</c></td>
+            <td id="1name_6" >Пластинчатый рекуператор без обводного канала</td>
+            <td id="1data_6_1">Марка привода</td>
+            <td id="1qwntt_6"><b>0</b></td></tr>
+<!-- Жидкостный рекуператор -->
+        <tr><td rowspan="3" id="1nom_7"><c>0</c></td>
+            <td rowspan="3" >Жидкостный (гликолевый) теплоутилизатор)</td>
+            <td id="1data_7_1">Марка узла теплоутилизатора</td>
+            <td rowspan="3" id="1qwntt_7"><b>0</b></td></tr>
+        <tr><td id="1data_7_2">Р насоса   кВт</td></tr>
+        <tr><td id="1data_7_3">U питания   В</td></tr>
+<!-- Роторный рекуператор -->
+        <tr><td rowspan="3" id="1nom_8"><c>0</c></td>
+            <td rowspan="3" >Роторный теплоутилизатор (подключение с использованием частотного преобразователя)</td>
+            <td id="1data_8_1">Р двигателя     кВт</td>
+            <td rowspan="3" id="1qwntt_8"><b>0</b></td></tr>
+        <tr><td id="1data_8_2">U питания   В</td></tr>
+        <tr><td id="1data_8_3">I номинальный    А</td></tr>
+    </table>
+</body>
